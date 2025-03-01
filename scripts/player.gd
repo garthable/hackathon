@@ -35,8 +35,12 @@ func go_up(delta: float) -> void:
 	theta += ANGULAR_VELOCITY_POS*delta
 	
 	var instance = bullet.instantiate()
-	instance.position = player.position
-	instance.rotation = player.rotation
+	var offset = Vector2(
+		15*cos(theta),
+		15*sin(theta)
+	)
+	instance.position = player.position + offset
+	instance.rotation = theta
 	parent.add_child(instance)
 	
 func go_down(delta: float) -> void:
