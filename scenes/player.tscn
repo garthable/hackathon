@@ -6,8 +6,10 @@
 size = Vector3(30, 10, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pwrcm"]
+size = Vector2(28, 8)
 
 [node name="Player" type="Area2D"]
+collision_mask = 28
 script = ExtResource("1_1rbgs")
 
 [node name="PlayerMesh" type="MeshInstance2D" parent="."]

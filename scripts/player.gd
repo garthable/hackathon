@@ -3,6 +3,7 @@ extends Area2D
 @onready var player = $"."
 @onready var camera = $"Camera2D"
 @onready var mesh = $"PlayerMesh"
+@onready var bullet = preload("res://scenes/bullet.tscn")
 
 const MAX_SPEED: float = 400.0
 const MIN_SPEED: float = 50.0
@@ -31,6 +32,11 @@ func go_up(delta: float) -> void:
 	speed = clampf(speed, MIN_SPEED, MAX_SPEED)
 	
 	theta += ANGULAR_VELOCITY_POS*delta
+	
+	var instance = bullet.instantiate()
+	print(instance)
+	instance.position = player.position
+	instance.rotation = player.rotation
 	
 func go_down(delta: float) -> void:
 	time_firing -= 4*delta
