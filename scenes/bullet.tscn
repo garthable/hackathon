@@ -1,17 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://b7h3gmdbxujes"]
+[gd_scene load_steps=4 format=3 uid="uid://b7h3gmdbxujes"]
+
+[ext_resource type="Script" path="res://scripts/bullet.gd" id="1_grqpp"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_4ocbx"]
-size = Vector3(3, 1, 1)
+size = Vector3(6, 2, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nq12s"]
-size = Vector2(4, 2)
+size = Vector2(7, 3)
 
 [node name="Bullet" type="Area2D"]
-collision_layer = 2
 collision_mask = 28
+script = ExtResource("1_grqpp")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
 mesh = SubResource("BoxMesh_4ocbx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_nq12s")
+
+[connection signal="area_entered" from="." to="." method="_collision"]

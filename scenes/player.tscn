@@ -20,4 +20,4 @@ mesh = SubResource("BoxMesh_4xdva")
 [node name="PlayerCollider" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_pwrcm")
 
-[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_entered" from="." to="." method="_collision"]

@@ -62,8 +62,8 @@ func _process(delta: float) -> void:
 	player.position.y += dy
 	player.rotation = theta
 	camera.rotation = -theta
-	
-func _on_area_entered(_area: Area2D) -> void:
+
+func _collision(area: Area2D) -> void:
 	is_dead = true
 	mesh.visible = false
 	# Play explosion
