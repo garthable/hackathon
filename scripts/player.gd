@@ -1,6 +1,7 @@
 extends Area2D
 
 @onready var player = $"."
+@onready var parent = $"../"
 @onready var camera = $"Camera2D"
 @onready var mesh = $"PlayerMesh"
 @onready var bullet = preload("res://scenes/bullet.tscn")
@@ -34,9 +35,9 @@ func go_up(delta: float) -> void:
 	theta += ANGULAR_VELOCITY_POS*delta
 	
 	var instance = bullet.instantiate()
-	print(instance)
 	instance.position = player.position
 	instance.rotation = player.rotation
+	parent.add_child(instance)
 	
 func go_down(delta: float) -> void:
 	time_firing -= 4*delta
