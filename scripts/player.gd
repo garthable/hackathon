@@ -25,6 +25,28 @@ var theta: float = 0.0
 
 var is_dead: bool = false
 
+var start_shooting_time: int = Time.get_ticks_msec()
+const FIRE_RATE: int = 1
+const FIRE_RATE_INC: int = 3
+var curr_fire_rate: int = 1
+
+func can_shoot() -> bool:
+	var delta_time = Time.get_ticks_msec() - start_shooting_time
+	return curr_fire_rate < delta_time
+
+func shoot_bullet() -> void:
+	start_shooting_time = Time.get_ticks_msec()
+	curr_fire_rate += FIRE_RATE_INC
+	var instance = bullet.instantiate()
+	var offset = Vector2(
+		15*cos(theta),
+		15*sin(theta)
+	)
+	instance.position = player.position + offset
+	instance.rotation = theta
+	instance.speed = instance.BASE_SPEED + speed
+	parent.add_child(instance)
+
 func go_up(delta: float) -> void:
 	time_firing += delta
 	time_firing = min(10.0, time_firing)
@@ -34,14 +56,8 @@ func go_up(delta: float) -> void:
 	
 	theta += ANGULAR_VELOCITY_POS*delta
 	
-	var instance = bullet.instantiate()
-	var offset = Vector2(
-		15*cos(theta),
-		15*sin(theta)
-	)
-	instance.position = player.position + offset
-	instance.rotation = theta
-	parent.add_child(instance)
+	if can_shoot():
+		shoot_bullet()
 	
 func go_down(delta: float) -> void:
 	time_firing -= 4*delta
@@ -55,6 +71,9 @@ func go_down(delta: float) -> void:
 func _process(delta: float) -> void:
 	if is_dead:
 		return
+	if Input.is_action_just_pressed("space"):
+		start_shooting_time = Time.get_ticks_msec()
+		curr_fire_rate = FIRE_RATE
 	if Input.is_action_pressed("space"):
 		go_up(delta)
 	else:
@@ -67,7 +86,7 @@ func _process(delta: float) -> void:
 	player.rotation = theta
 	camera.rotation = -theta
 
-func _collision(area: Area2D) -> void:
+func _collision(_area: Area2D) -> void:
 	is_dead = true
 	mesh.visible = false
 	# Play explosion
