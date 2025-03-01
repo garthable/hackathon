@@ -11,5 +11,4 @@ func _process(delta: float) -> void:
 
 
 func _collision(_area: Area2D) -> void:
-	print('hit!')
 	bullet.queue_free()
