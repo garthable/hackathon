@@ -1,7 +1,8 @@
-extends CharacterBody2D
+extends Area2D
 
 @onready var player = $"."
 @onready var camera = $"Camera2D"
+@onready var mesh = $"PlayerMesh"
 
 const MAX_SPEED: float = 400.0
 const MIN_SPEED: float = 50.0
@@ -19,6 +20,8 @@ var time_firing: float = 0.0
 
 var speed: float = 0.0
 var theta: float = 0.0
+
+var is_dead: bool = false
 
 func go_up(delta: float) -> void:
 	time_firing += delta
@@ -39,6 +42,8 @@ func go_down(delta: float) -> void:
 	theta += ANGULAR_VELOCITY_NEG*delta
 
 func _process(delta: float) -> void:
+	if is_dead:
+		return
 	if Input.is_action_pressed("space"):
 		go_up(delta)
 	else:
@@ -50,3 +55,9 @@ func _process(delta: float) -> void:
 	player.position.y += dy
 	player.rotation = theta
 	camera.rotation = -theta
+	
+func _on_area_entered(_area: Area2D) -> void:
+	is_dead = true
+	mesh.visible = false
+	# Play explosion
+	# continue velocity
