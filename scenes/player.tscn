@@ -19,7 +19,7 @@ script = ExtResource("1_1rbgs")
 mesh = SubResource("BoxMesh_4xdva")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(0.2, 0.2)
+zoom = Vector2(0.8, 0.8)
 
 [node name="PlayerCollider" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_pwrcm")
