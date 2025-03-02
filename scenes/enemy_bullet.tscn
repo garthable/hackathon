@@ -6,6 +6,7 @@
 size = Vector2(6, 2)
 
 [sub_resource type="BoxMesh" id="BoxMesh_ee2im"]
+lightmap_size_hint = Vector2i(39, 56)
 size = Vector3(6, 2, 1)
 
 [node name="EnemyBullet" type="Area2D"]
