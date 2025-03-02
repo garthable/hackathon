@@ -4,6 +4,7 @@ extends Area2D
 @onready var deployer = $"."
 @onready var player = $"../Player"
 @onready var missile = preload("res://scenes/missile.tscn")
+@onready var spawn_explosion = preload("res://scripts/spawn_explosion.gd")
 
 const SPEED: float = -70.0
 const FIRE_RATE: int = 2000
@@ -48,4 +49,5 @@ func _process(delta: float) -> void:
 func _collision(area: Area2D) -> void:
 	if "lowering" in area and area.lowering: 
 		return
+	spawn_explosion.new().spawn_explosion(deployer.position, $'../')
 	deployer.queue_free()

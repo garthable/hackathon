@@ -6,6 +6,7 @@ extends Area2D
 @onready var mesh = $"PlayerMesh"
 @onready var col = $"PlayerCollider"
 @onready var bullet = preload("res://scenes/bullet.tscn")
+@onready var spawn_explosion = preload("res://scripts/spawn_explosion.gd")
 
 const MAX_SPEED: float = 400.0
 const MIN_SPEED: float = 50.0
@@ -91,6 +92,7 @@ func _collision(_area: Area2D) -> void:
 	is_dead = true
 	mesh.visible = false
 	col.set_deferred("disabled", true)
+	spawn_explosion.new().spawn_explosion(player.position, $'../')
 	
 	# Play explosion
 	# continue velocity

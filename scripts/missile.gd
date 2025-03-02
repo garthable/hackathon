@@ -2,6 +2,7 @@ extends Area2D
 
 @onready var missile = $"."
 @onready var player = $"../Player"
+@onready var spawn_explosion = preload("res://scripts/spawn_explosion.gd")
 
 var lowering = true
 
@@ -43,4 +44,5 @@ func _process(delta: float) -> void:
 func _collision(area: Area2D) -> void:
 	if area.name.substr(0, 3) == "Dep":
 		return
+	spawn_explosion.new().spawn_explosion(missile.position, $'../')
 	missile.queue_free()

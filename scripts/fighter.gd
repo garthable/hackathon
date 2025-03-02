@@ -4,6 +4,7 @@ extends Node2D
 @onready var fighter = $"."
 @onready var player = $"../Player"
 @onready var bullet = preload("res://scenes/enemy_bullet.tscn")
+@onready var spawn_explosion = preload("res://scripts/spawn_explosion.gd")
 
 const SPEED: float = -50.0
 var shoot: bool = false
@@ -43,7 +44,8 @@ func _process(delta: float) -> void:
 		shoot_bullet()
 	
 func _collision(_area: Area2D) -> void:
-	fighter.queue_free()
+	spawn_explosion.new().spawn_explosion(fighter.position, $"../")
+	fighter.queue_free() 
 
 func _shoot_trigger_enter(area: Area2D) -> void:
 	if area.name == "Player":

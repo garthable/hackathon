@@ -2,6 +2,7 @@ extends Area2D
 
 @onready var imp = $"."
 @onready var player = $"../Player"
+@onready var spawn_explosion = preload("res://scripts/spawn_explosion.gd")
 
 const SPEED: float = -300.0
 
@@ -26,4 +27,5 @@ func _process(delta: float) -> void:
 
 
 func _collision(area: Area2D) -> void:
+	spawn_explosion.new().spawn_explosion(imp.position, $'../')
 	imp.queue_free()
