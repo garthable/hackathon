@@ -48,6 +48,7 @@ func shoot_bullet() -> void:
 	instance.rotation = theta
 	instance.speed = instance.BASE_SPEED + speed
 	parent.add_child(instance)
+	spawn_explosion.new().spawn_muzzle_flash(Vector2(15, 0), $".")
 
 func go_up(delta: float) -> void:
 	time_firing += delta

@@ -9,3 +9,10 @@ func spawn_bullet_explosion(position: Vector2, parent: Node):
 	instance.position = position
 	parent.add_child(instance)
 	instance.emitting = true
+
+func spawn_muzzle_flash(position: Vector2, parent: Node, theta = 0.0):
+	var instance: GPUParticles2D = load("res://scenes/muzzle_flash.tscn").instantiate()
+	instance.position = position
+	instance.rotation = theta
+	parent.add_child(instance)
+	instance.emitting = true
