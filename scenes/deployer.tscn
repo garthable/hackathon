@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://b1j7n3yd73vuy"]
+
+[ext_resource type="Script" path="res://scripts/deployer.gd" id="1_wacqf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5co3o"]
+size = Vector2(80, 40)
+
+[sub_resource type="BoxMesh" id="BoxMesh_icycl"]
+size = Vector3(80, 40, 1)
+
+[node name="Deployer" type="Area2D"]
+position = Vector2(1, 0)
+collision_layer = 4
+collision_mask = 31
+script = ExtResource("1_wacqf")
+
+[node name="DeployerCollision" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_5co3o")
+
+[node name="DeployerMesh" type="MeshInstance2D" parent="."]
+mesh = SubResource("BoxMesh_icycl")
+
+[connection signal="area_entered" from="." to="." method="_collision"]
