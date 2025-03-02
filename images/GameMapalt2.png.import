@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bxtgp1r4ytx1d"
-path="res://.godot/imported/GameMapalt2.png-3c70719f6a5599eb4f3a70e9f914ddca.ctex"
+path="res://.godot/imported/GameMapalt2.png-be7f47592937dbc849ef7102218055c5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://GameMapalt2.png"
-dest_files=["res://.godot/imported/GameMapalt2.png-3c70719f6a5599eb4f3a70e9f914ddca.ctex"]
+source_file="res://images/GameMapalt2.png"
+dest_files=["res://.godot/imported/GameMapalt2.png-be7f47592937dbc849ef7102218055c5.ctex"]
 
 [params]
 
