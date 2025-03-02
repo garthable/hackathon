@@ -48,6 +48,7 @@ func shoot_bullet() -> void:
 	instance.rotation = theta
 	instance.speed = instance.BASE_SPEED + speed
 	parent.add_child(instance)
+	spawn_explosion.new().spawn_muzzle_flash(Vector2(15, 0), $".")
 
 func go_up(delta: float) -> void:
 	time_firing += delta
@@ -93,6 +94,10 @@ func _collision(_area: Area2D) -> void:
 	mesh.visible = false
 	col.set_deferred("disabled", true)
 	spawn_explosion.new().spawn_explosion(player.position, $'../')
+	
+	var death_menu = load('res://scenes/death_screen.tscn')
+	var instance: CanvasLayer = death_menu.instantiate()
+	$'Camera2D'.add_child(instance)
 	
 	# Play explosion
 	# continue velocity

@@ -20,6 +20,7 @@ func shoot_bullet() -> void:
 	instance.rotation = theta
 	instance.speed = -instance.BASE_SPEED + SPEED
 	parent.add_child(instance)
+	spawn_explosion.new().spawn_muzzle_flash(Vector2(-31, 0), $".", PI)
 
 func rotate_towards(theta: float, pos: Vector2, player_pos: Vector2) -> float:
 	var dx = pos.x - player_pos.x
