@@ -16,6 +16,9 @@ var speed = -LOWER_SPEED
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	""" 
+	Updates missile and rotation
+	"""
 	var theta: float = missile.rotation
 	var pos: Vector2 = missile.position
 	if Time.get_ticks_msec() - creation_time <= ACTIVATE_TIME:
