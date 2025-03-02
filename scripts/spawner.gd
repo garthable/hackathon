@@ -11,35 +11,26 @@ extends Node2D
 @onready var spawner = $"."
 @onready var parent = $"../../"
 
-var turret_spawned = false
-
-func spawn_turret() -> bool:
-	var player_pos = player.position
-	var pos = spawner.position
-	if (player_pos - pos).length() <= 200 or turret_spawned:
-		return false
-	var instance = enemies["turret"].instantiate()
-	var dx = pos.x - player_pos.x
-	var dy = pos.y - player_pos.y
-	var theta = atan2(dy, dx)
-	
-	instance.postiion = pos
-	instance.rotation = 0
-	parent.add_child(instance)
-	turret_spawned = true
-	return true
+var inside_list = []
 
 func spawn(name: String) -> bool:
 	var player_pos = player.position
 	var pos = spawner.position
-	if (player_pos - pos).length() <= 200 or turret_spawned:
+	if len(inside_list):
 		return false
 	var instance = enemies[name].instantiate()
-	var dx = pos.x - player_pos.x
-	var dy = pos.y - player_pos.y
-	var theta = atan2(dy, dx)
 	
 	instance.position = pos
-	instance.rotation = theta
 	parent.add_child(instance)
 	return true
+
+
+
+
+func _on_area_entered(area: Area2D) -> void:
+	inside_list.append(area)
+
+func _on_area_exited(area: Area2D) -> void:
+	print(len(inside_list))
+	inside_list.remove_at(inside_list.find(area, 0))
+	print(len(inside_list))

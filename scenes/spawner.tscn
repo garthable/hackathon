@@ -1,6 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://cog6plubmoa6y"]
+[gd_scene load_steps=3 format=3 uid="uid://cdvueajcb24xv"]
 
 [ext_resource type="Script" path="res://scripts/spawner.gd" id="1_j3g7j"]
 
-[node name="Spawner" type="Node2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_1i3ic"]
+radius = 300.0
+
+[node name="Spawner" type="Area2D"]
+collision_layer = 0
+collision_mask = 15
 script = ExtResource("1_j3g7j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_1i3ic")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]

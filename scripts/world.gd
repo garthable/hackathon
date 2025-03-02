@@ -14,6 +14,7 @@ extends Node2D
 @onready var BR= $"Spawner/BottomRight"
 
 @onready var spawners = [TL, TR, BL, BR]
+@onready var turret_spawners = [TM, ML, MR, BM]
 
 
 @export var mob_scene: PackedScene
@@ -30,21 +31,21 @@ var deployer_to_spawn: int = 0
 var turrets_to_spawn: int = 0
 
 var index: int = 0
+var turret_index: int = 0
 
 func _Title() -> void:
-	print("Title")
 	pass
 		
 func new_game() ->void:
 	time = 0
 	score = 0
 
-	 
+var prev_score_time = Time.get_ticks_msec()
+
 func _Score(delta: float) -> float:
-	time += 1
-	if time%100 == 0:
+	if Time.get_ticks_msec() - prev_score_time >= 1000:
+		prev_score_time = Time.get_ticks_msec()
 		score += 1
-		print(score)
 	return score
 	
 func _OpenTunnel() -> void:
@@ -54,6 +55,14 @@ func _OpenTunnel() -> void:
 func _ready() -> void:
 	new_game()
 	pass # Replace with function body.
+
+func spawn_turret() -> bool:
+	for i in range(4):
+		turret_index = (turret_index + 1) % 4
+		if turret_spawners[turret_index].spawn("turret"):
+			return true
+			
+	return false
 
 func spawn_mob(name: String) -> bool:
 	for i in range(4):
@@ -65,21 +74,23 @@ func spawn_mob(name: String) -> bool:
 
 var prev_score = -1
 
+var prev_spawn_time = 0.0
+var spawn_time = 5000
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	prev_score = score
 	score = int(_Score(delta))
-	if prev_score != score:
-		if score % 3 == 0 or score % 2 == 0:
-			imps_to_spawn += 1
-		elif score % 3 == 1 or score % 4 == 0:
-			fighters_to_spawn += 1
+	if Time.get_ticks_msec() - prev_spawn_time >= spawn_time:
+		prev_spawn_time = Time.get_ticks_msec()
+		spawn_time = max(spawn_time / 1.01, 500)
+		var roll = randi_range(0, 100)
+		if roll <= 50 or score < 15:
+			spawn_mob("imp")
+		elif roll <= 70 or score < 60:
+			spawn_mob("fighter")
+		elif roll <= 80:
+			spawn_mob("deployer")
 		else:
-			deployer_to_spawn += 1
-	if imps_to_spawn > 0 and spawn_mob("imp"):
-		imps_to_spawn -= 1
-	if fighters_to_spawn > 0 and spawn_mob("fighter"):
-		fighters_to_spawn -= 1
-	if deployer_to_spawn > 0 and spawn_mob("deployer"):
-		deployer_to_spawn -= 1
+			spawn_turret()
 	pass
