@@ -1,9 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://d0s3x2j0hrosx"]
+[gd_scene load_steps=10 format=3 uid="uid://d0s3x2j0hrosx"]
 
+[ext_resource type="Script" path="res://scripts/world.gd" id="1_kd32l"]
 [ext_resource type="PackedScene" uid="uid://c7avru4nk0jpl" path="res://scenes/player.tscn" id="1_vc3yd"]
-[ext_resource type="PackedScene" uid="uid://22t5igcnh3t1" path="res://scenes/wall.tscn" id="2_wesjt"]
-[ext_resource type="PackedScene" uid="uid://cpel6vvf1yusu" path="res://scenes/fighter.tscn" id="3_inbiy"]
-[ext_resource type="PackedScene" uid="uid://b1j7n3yd73vuy" path="res://scenes/deployer.tscn" id="4_gnv5x"]
+[ext_resource type="PackedScene" uid="uid://cog6plubmoa6y" path="res://scenes/spawner.tscn" id="2_o5bso"]
+[ext_resource type="PackedScene" uid="uid://b85auiqtryin" path="res://scenes/wall.tscn" id="2_wesjt"]
+[ext_resource type="PackedScene" path="res://scenes/fighter.tscn" id="3_inbiy"]
+[ext_resource type="PackedScene" uid="uid://ca2o3x6atf2gd" path="res://scenes/deployer.tscn" id="4_gnv5x"]
 [ext_resource type="PackedScene" uid="uid://brgr1hpjxyj63" path="res://scenes/turret.tscn" id="5_yh3y5"]
 [ext_resource type="PackedScene" uid="uid://b2gkajm3mnqta" path="res://scenes/imp.tscn" id="7_e6diy"]
 
@@ -11,6 +13,7 @@
 size = Vector3(10, 10, 1)
 
 [node name="World" type="Node2D"]
+script = ExtResource("1_kd32l")
 
 [node name="Player" parent="." instance=ExtResource("1_vc3yd")]
 
@@ -78,3 +81,29 @@ position = Vector2(-260, 455)
 
 [node name="Imp" parent="." instance=ExtResource("7_e6diy")]
 position = Vector2(0, 156)
+
+[node name="Spawner" parent="." instance=ExtResource("2_o5bso")]
+
+[node name="TopLeft" parent="Spawner" instance=ExtResource("2_o5bso")]
+position = Vector2(-759, -677)
+
+[node name="TopMiddle" parent="Spawner" instance=ExtResource("2_o5bso")]
+position = Vector2(-135, -806)
+
+[node name="TopRight" parent="Spawner" instance=ExtResource("2_o5bso")]
+position = Vector2(777, -730)
+
+[node name="MiddleLeft" parent="Spawner" instance=ExtResource("2_o5bso")]
+position = Vector2(-770, 139)
+
+[node name="MiddleRight" parent="Spawner" instance=ExtResource("2_o5bso")]
+position = Vector2(623, 161)
+
+[node name="BottomLeft" parent="Spawner" instance=ExtResource("2_o5bso")]
+position = Vector2(-688, 752)
+
+[node name="BottomMiddle" parent="Spawner" instance=ExtResource("2_o5bso")]
+position = Vector2(0, 706)
+
+[node name="BottomRight" parent="Spawner" instance=ExtResource("2_o5bso")]
+position = Vector2(649, 784)

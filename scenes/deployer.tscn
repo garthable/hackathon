@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://b1j7n3yd73vuy"]
+[gd_scene load_steps=4 format=3 uid="uid://ca2o3x6atf2gd"]
 
 [ext_resource type="Script" path="res://scripts/deployer.gd" id="1_wacqf"]
 

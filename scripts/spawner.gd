@@ -7,9 +7,9 @@ extends Node2D
 	"turret": preload("res://scenes/turret.tscn")
 }
 
-@onready var player = $"../Player"
+@onready var player: Area2D = $"../../Player"
 @onready var spawner = $"."
-@onready var parent = $"../"
+@onready var parent = $"../../"
 
 var turret_spawned = false
 
@@ -39,7 +39,7 @@ func spawn(name: String) -> bool:
 	var dy = pos.y - player_pos.y
 	var theta = atan2(dy, dx)
 	
-	instance.postiion = pos
+	instance.position = pos
 	instance.rotation = theta
 	parent.add_child(instance)
 	return true
