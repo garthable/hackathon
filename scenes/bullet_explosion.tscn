@@ -27,6 +27,7 @@ scale_curve = SubResource("CurveTexture_jayxf")
 color_ramp = SubResource("GradientTexture1D_rrb3x")
 
 [node name="BulletExplosion" type="GPUParticles2D"]
+z_index = -2
 emitting = false
 amount = 32
 process_material = SubResource("ParticleProcessMaterial_hcg5g")

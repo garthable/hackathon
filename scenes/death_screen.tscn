@@ -4,7 +4,9 @@
 [ext_resource type="Script" path="res://scripts/goto_main_menu.gd" id="2_pn13q"]
 [ext_resource type="Script" path="res://scripts/quit.gd" id="3_ahxsg"]
 
-[node name="DeathScreen" type="PanelContainer"]
+[node name="DeathScreen" type="CanvasLayer"]
+
+[node name="DeathScreen" type="PanelContainer" parent="."]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -18,32 +20,32 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="DeathScreen"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="DeathScreen/MarginContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="DeathScreen/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "DEAD"
 horizontal_alignment = 1
 
-[node name="Restart" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Restart" type="Button" parent="DeathScreen/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Restart"
 script = ExtResource("1_1cvv8")
 
-[node name="MainMenu" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="MainMenu" type="Button" parent="DeathScreen/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Main Menu"
 script = ExtResource("2_pn13q")
 
-[node name="Quit" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Quit" type="Button" parent="DeathScreen/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Quit"
 script = ExtResource("3_ahxsg")
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Restart" to="MarginContainer/VBoxContainer/Restart" method="_on_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/MainMenu" to="MarginContainer/VBoxContainer/MainMenu" method="_on_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Quit" to="MarginContainer/VBoxContainer/Quit" method="_on_pressed"]
+[connection signal="pressed" from="DeathScreen/MarginContainer/VBoxContainer/Restart" to="DeathScreen/MarginContainer/VBoxContainer/Restart" method="_on_pressed"]
+[connection signal="pressed" from="DeathScreen/MarginContainer/VBoxContainer/MainMenu" to="DeathScreen/MarginContainer/VBoxContainer/MainMenu" method="_on_pressed"]
+[connection signal="pressed" from="DeathScreen/MarginContainer/VBoxContainer/Quit" to="DeathScreen/MarginContainer/VBoxContainer/Quit" method="_on_pressed"]
