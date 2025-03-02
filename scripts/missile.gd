@@ -7,7 +7,7 @@ var lowering = true
 
 const ACTIVATE_TIME: int = 2000
 @onready var creation_time: int = Time.get_ticks_msec()
-const LOWER_SPEED = 0
+const LOWER_SPEED = 75
 
 const ACCELERATION = -50
 var speed = -LOWER_SPEED
