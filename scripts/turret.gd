@@ -2,6 +2,7 @@ extends Area2D
 
 @onready var turret = $"."
 @onready var mesh = $"MeshInstance2D"
+@onready var col = $"CollisionShape2D"
 @onready var player = $"../Player"
 @onready var line = $"Line2D"
 
@@ -46,6 +47,7 @@ func track() -> void:
 	var player_pos: Vector2 = player.position
 	
 	mesh.rotation = rotate_towards(theta, pos, player_pos)
+	col.rotation = mesh.rotation
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:	
@@ -62,5 +64,5 @@ func _process(delta: float) -> void:
 		shoot()
 	track()
 
-func _collision(area: Area2D) -> void:
+func _collision(_area: Area2D) -> void:
 	turret.queue_free()
