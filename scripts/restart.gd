@@ -1,5 +1,8 @@
 extends Button
 
+func _input(event: InputEvent) -> void:
+	if event.is_action("space"):
+		_on_pressed()
 
 func _on_pressed() -> void:
 	var root = $"../../../../../../../../"

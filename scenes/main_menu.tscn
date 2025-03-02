@@ -24,7 +24,7 @@ layout_mode = 2
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
-text = "Main Menu"
+text = "You Only Need Space"
 horizontal_alignment = 1
 
 [node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer"]
@@ -35,6 +35,11 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 25
 text = "Play"
 script = ExtResource("1_itm8h")
+
+[node name="RichTextLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Hint: Try pressing the Space Bar!"
+horizontal_alignment = 1
 
 [node name="Quit" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
