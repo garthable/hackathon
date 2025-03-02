@@ -3,8 +3,8 @@ extends Area2D
 @onready var parent = $"../"
 @onready var deployer = $"."
 @onready var player = $"../Player"
-@onready var missile = preload("res://scenes/missile.tscn")
-@onready var spawn_explosion = preload("res://scripts/spawn_explosion.gd")
+@onready var missile = preload("res://scenes/enemies/missile.tscn")
+@onready var spawn_explosion = preload("res://scripts/helpers/spawn_explosion.gd")
 
 const SPEED: float = -70.0
 const FIRE_RATE: int = 2000

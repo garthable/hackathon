@@ -5,7 +5,7 @@ func _input(event: InputEvent) -> void:
 		_on_pressed()
 
 func _on_pressed() -> void:
-	var game = load("res://scenes/world.tscn")
+	var game = load("res://scenes/world/world.tscn")
 	var instance = game.instantiate()
 	var menu = $'../../../'
 	var root = $'../../../../'

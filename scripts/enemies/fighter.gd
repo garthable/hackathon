@@ -3,8 +3,8 @@ extends Node2D
 @onready var parent = $"../"
 @onready var fighter = $"."
 @onready var player = $"../Player"
-@onready var bullet = preload("res://scenes/enemy_bullet.tscn")
-@onready var spawn_explosion = preload("res://scripts/spawn_explosion.gd")
+@onready var bullet = preload("res://scenes/enemies/enemy_bullet.tscn")
+@onready var spawn_explosion = preload("res://scripts/helpers/spawn_explosion.gd")
 
 const SPEED: float = -70.0
 var shoot: bool = false

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dgby7ljrg3cgp"]
 
-[ext_resource type="Script" path="res://scripts/bullet.gd" id="1_0jpwy"]
+[ext_resource type="Script" path="res://scripts/enemies/bullet.gd" id="1_5u5k1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xbvwl"]
 size = Vector2(6, 2)
@@ -13,7 +13,7 @@ size = Vector3(6, 2, 1)
 z_index = -2
 collision_layer = 8
 collision_mask = 31
-script = ExtResource("1_0jpwy")
+script = ExtResource("1_5u5k1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_xbvwl")

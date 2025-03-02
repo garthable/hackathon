@@ -5,7 +5,7 @@ extends Area2D
 @onready var col = $"CollisionShape2D"
 @onready var player = $"../Player"
 @onready var line = $"Line2D"
-@onready var spawn_explosion = preload("res://scripts/spawn_explosion.gd")
+@onready var spawn_explosion = preload("res://scripts/helpers/spawn_explosion.gd")
 
 const FIRE_RATE: int = 3000
 

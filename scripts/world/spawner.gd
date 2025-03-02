@@ -1,10 +1,10 @@
 extends Node2D
 
 @onready var enemies = {
-	"imp": preload("res://scenes/imp.tscn"),
-	"fighter": preload("res://scenes/fighter.tscn"),
-	"deployer": preload("res://scenes/deployer.tscn"),
-	"turret": preload("res://scenes/turret.tscn")
+	"imp": preload("res://scenes/enemies/imp.tscn"),
+	"fighter": preload("res://scenes/enemies/fighter.tscn"),
+	"deployer": preload("res://scenes/enemies/deployer.tscn"),
+	"turret": preload("res://scenes/enemies/turret.tscn")
 }
 
 @onready var player: Area2D = $"../../Player"

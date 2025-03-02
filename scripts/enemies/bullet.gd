@@ -1,7 +1,7 @@
 extends Area2D
 
 @onready var bullet = $"."
-@onready var explosion_spawner = preload("res://scripts/spawn_explosion.gd")
+@onready var explosion_spawner = preload("res://scripts/helpers/spawn_explosion.gd")
 const BASE_SPEED = 400
 var speed = BASE_SPEED
 var prev_pos = Vector2(0, 0)

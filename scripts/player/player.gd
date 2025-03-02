@@ -5,8 +5,8 @@ extends Area2D
 @onready var camera = $"Camera2D"
 @onready var mesh = $"PlayerMesh"
 @onready var col = $"PlayerCollider"
-@onready var bullet = preload("res://scenes/bullet.tscn")
-@onready var spawn_explosion = preload("res://scripts/spawn_explosion.gd")
+@onready var bullet = preload("res://scenes/player/bullet.tscn")
+@onready var spawn_explosion = preload("res://scripts/helpers/spawn_explosion.gd")
 
 const MAX_SPEED: float = 350.0
 const MIN_SPEED: float = 50.0
@@ -95,7 +95,7 @@ func _collision(_area: Area2D) -> void:
 	col.set_deferred("disabled", true)
 	spawn_explosion.new().spawn_explosion(player.position, $'../')
 	
-	var death_menu = load('res://scenes/death_screen.tscn')
+	var death_menu = load('res://scenes/ui/death_screen.tscn')
 	var instance: CanvasLayer = death_menu.instantiate()
 	$'Camera2D'.add_child(instance)
 	

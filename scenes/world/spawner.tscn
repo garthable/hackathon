@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cdvueajcb24xv"]
 
-[ext_resource type="Script" path="res://scripts/spawner.gd" id="1_j3g7j"]
+[ext_resource type="Script" path="res://scripts/world/spawner.gd" id="1_j3g7j"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1i3ic"]
 radius = 300.0

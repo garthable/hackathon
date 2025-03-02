@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cpel6vvf1yusu"]
 
-[ext_resource type="Script" path="res://scripts/fighter.gd" id="1_lx1tf"]
+[ext_resource type="Script" path="res://scripts/enemies/fighter.gd" id="1_lx1tf"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_15p88"]
 size = Vector3(50, 40, 1)
