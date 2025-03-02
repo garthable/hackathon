@@ -1,13 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://d0s3x2j0hrosx"]
+[gd_scene load_steps=6 format=3 uid="uid://d0s3x2j0hrosx"]
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_kd32l"]
 [ext_resource type="PackedScene" uid="uid://c7avru4nk0jpl" path="res://scenes/player.tscn" id="1_vc3yd"]
-[ext_resource type="PackedScene" uid="uid://cog6plubmoa6y" path="res://scenes/spawner.tscn" id="2_o5bso"]
-[ext_resource type="PackedScene" uid="uid://b85auiqtryin" path="res://scenes/wall.tscn" id="2_wesjt"]
-[ext_resource type="PackedScene" path="res://scenes/fighter.tscn" id="3_inbiy"]
-[ext_resource type="PackedScene" uid="uid://ca2o3x6atf2gd" path="res://scenes/deployer.tscn" id="4_gnv5x"]
-[ext_resource type="PackedScene" uid="uid://brgr1hpjxyj63" path="res://scenes/turret.tscn" id="5_yh3y5"]
-[ext_resource type="PackedScene" uid="uid://b2gkajm3mnqta" path="res://scenes/imp.tscn" id="7_e6diy"]
+[ext_resource type="PackedScene" uid="uid://cdvueajcb24xv" path="res://scenes/spawner.tscn" id="2_o5bso"]
+[ext_resource type="PackedScene" uid="uid://22t5igcnh3t1" path="res://scenes/wall.tscn" id="2_wesjt"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_py5vv"]
 size = Vector3(10, 10, 1)
@@ -16,9 +12,6 @@ size = Vector3(10, 10, 1)
 script = ExtResource("1_kd32l")
 
 [node name="Player" parent="." instance=ExtResource("1_vc3yd")]
-
-[node name="Fighter" parent="." instance=ExtResource("3_inbiy")]
-position = Vector2(-220, 130)
 
 [node name="Env" type="Node2D" parent="."]
 
@@ -73,16 +66,8 @@ mesh = SubResource("BoxMesh_py5vv")
 position = Vector2(-500, -533)
 mesh = SubResource("BoxMesh_py5vv")
 
-[node name="Deployer" parent="." instance=ExtResource("4_gnv5x")]
-position = Vector2(1, 865)
-
-[node name="Turret" parent="." instance=ExtResource("5_yh3y5")]
-position = Vector2(-260, 455)
-
-[node name="Imp" parent="." instance=ExtResource("7_e6diy")]
-position = Vector2(0, 156)
-
 [node name="Spawner" parent="." instance=ExtResource("2_o5bso")]
+script = null
 
 [node name="TopLeft" parent="Spawner" instance=ExtResource("2_o5bso")]
 position = Vector2(-759, -677)
