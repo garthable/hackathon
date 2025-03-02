@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://cpel6vvf1yusu"]
+
+[ext_resource type="Script" path="res://scripts/fighter.gd" id="1_lx1tf"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_15p88"]
+size = Vector3(50, 40, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vrm4w"]
+size = Vector2(203.5, 65)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fheal"]
+size = Vector2(50, 40)
+
+[node name="Fighter" type="Node2D"]
+script = ExtResource("1_lx1tf")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+mesh = SubResource("BoxMesh_15p88")
+
+[node name="ShootCollider" type="Area2D" parent="."]
+collision_layer = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ShootCollider"]
+position = Vector2(-127, 0)
+shape = SubResource("RectangleShape2D_vrm4w")
+
+[node name="FighterCollider" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 31
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FighterCollider"]
+shape = SubResource("RectangleShape2D_fheal")
+
+[connection signal="area_entered" from="ShootCollider" to="." method="_shoot_trigger_enter"]
+[connection signal="area_exited" from="ShootCollider" to="." method="_shoot_trigger_exit"]
+[connection signal="area_entered" from="FighterCollider" to="." method="_collision"]

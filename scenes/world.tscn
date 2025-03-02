@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://d0s3x2j0hrosx"]
+[gd_scene load_steps=5 format=3 uid="uid://d0s3x2j0hrosx"]
 
 [ext_resource type="PackedScene" uid="uid://c7avru4nk0jpl" path="res://scenes/player.tscn" id="1_vc3yd"]
 [ext_resource type="PackedScene" uid="uid://22t5igcnh3t1" path="res://scenes/wall.tscn" id="2_wesjt"]
+[ext_resource type="PackedScene" uid="uid://cpel6vvf1yusu" path="res://scenes/fighter.tscn" id="3_inbiy"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_py5vv"]
 size = Vector3(10, 10, 1)
@@ -10,53 +11,58 @@ size = Vector3(10, 10, 1)
 
 [node name="Player" parent="." instance=ExtResource("1_vc3yd")]
 
-[node name="Left Wall" parent="." instance=ExtResource("2_wesjt")]
+[node name="Fighter" parent="." instance=ExtResource("3_inbiy")]
+position = Vector2(-220, 130)
+
+[node name="Env" type="Node2D" parent="."]
+
+[node name="Left Wall" parent="Env" instance=ExtResource("2_wesjt")]
 position = Vector2(-1000, 0)
 scale = Vector2(1, 100)
 
-[node name="Right Wall" parent="." instance=ExtResource("2_wesjt")]
+[node name="Right Wall" parent="Env" instance=ExtResource("2_wesjt")]
 position = Vector2(1000, 0)
 scale = Vector2(1, 100)
 
-[node name="Top Wall" parent="." instance=ExtResource("2_wesjt")]
+[node name="Top Wall" parent="Env" instance=ExtResource("2_wesjt")]
 position = Vector2(0, -1000)
 scale = Vector2(100, 1)
 
-[node name="Bottom Wall" parent="." instance=ExtResource("2_wesjt")]
+[node name="Bottom Wall" parent="Env" instance=ExtResource("2_wesjt")]
 position = Vector2(0, 1000)
 scale = Vector2(100, 1)
 
-[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Env"]
 mesh = SubResource("BoxMesh_py5vv")
 
-[node name="MeshInstance2D2" type="MeshInstance2D" parent="."]
+[node name="MeshInstance2D2" type="MeshInstance2D" parent="Env"]
 position = Vector2(500, 0)
 mesh = SubResource("BoxMesh_py5vv")
 
-[node name="MeshInstance2D3" type="MeshInstance2D" parent="."]
+[node name="MeshInstance2D3" type="MeshInstance2D" parent="Env"]
 position = Vector2(-500, 0)
 mesh = SubResource("BoxMesh_py5vv")
 
-[node name="MeshInstance2D4" type="MeshInstance2D" parent="."]
+[node name="MeshInstance2D4" type="MeshInstance2D" parent="Env"]
 position = Vector2(0, -533)
 mesh = SubResource("BoxMesh_py5vv")
 
-[node name="MeshInstance2D5" type="MeshInstance2D" parent="."]
+[node name="MeshInstance2D5" type="MeshInstance2D" parent="Env"]
 position = Vector2(500, -533)
 mesh = SubResource("BoxMesh_py5vv")
 
-[node name="MeshInstance2D7" type="MeshInstance2D" parent="."]
+[node name="MeshInstance2D7" type="MeshInstance2D" parent="Env"]
 position = Vector2(1, 647)
 mesh = SubResource("BoxMesh_py5vv")
 
-[node name="MeshInstance2D8" type="MeshInstance2D" parent="."]
+[node name="MeshInstance2D8" type="MeshInstance2D" parent="Env"]
 position = Vector2(501, 647)
 mesh = SubResource("BoxMesh_py5vv")
 
-[node name="MeshInstance2D9" type="MeshInstance2D" parent="."]
+[node name="MeshInstance2D9" type="MeshInstance2D" parent="Env"]
 position = Vector2(-499, 647)
 mesh = SubResource("BoxMesh_py5vv")
 
-[node name="MeshInstance2D6" type="MeshInstance2D" parent="."]
+[node name="MeshInstance2D6" type="MeshInstance2D" parent="Env"]
 position = Vector2(-500, -533)
 mesh = SubResource("BoxMesh_py5vv")

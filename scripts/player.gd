@@ -4,6 +4,7 @@ extends Area2D
 @onready var parent = $"../"
 @onready var camera = $"Camera2D"
 @onready var mesh = $"PlayerMesh"
+@onready var col = $"PlayerCollider"
 @onready var bullet = preload("res://scenes/bullet.tscn")
 
 const MAX_SPEED: float = 400.0
@@ -89,5 +90,7 @@ func _process(delta: float) -> void:
 func _collision(_area: Area2D) -> void:
 	is_dead = true
 	mesh.visible = false
+	col.set_deferred("disabled", true)
+	
 	# Play explosion
 	# continue velocity
