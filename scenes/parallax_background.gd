@@ -1,11 +1,13 @@
 extends ParallaxBackground
 
+@onready var player = $'../../Player'
+@onready var texture1 = $'TextureRect'
+@onready var texture2 = $'TextureRect2'
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
+const TEXT1_MOVEMENT = -0.1
+const TEXT2_MOVEMENT = -0.2
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	texture1.position = player.position*TEXT1_MOVEMENT
+	texture2.position = player.position*TEXT2_MOVEMENT

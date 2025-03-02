@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_kd32l"]
 [ext_resource type="PackedScene" uid="uid://c7avru4nk0jpl" path="res://scenes/player.tscn" id="1_vc3yd"]
-[ext_resource type="PackedScene" uid="uid://cog6plubmoa6y" path="res://scenes/spawner.tscn" id="2_o5bso"]
-[ext_resource type="PackedScene" uid="uid://b85auiqtryin" path="res://scenes/wall.tscn" id="2_wesjt"]
+[ext_resource type="PackedScene" uid="uid://cdvueajcb24xv" path="res://scenes/spawner.tscn" id="2_o5bso"]
+[ext_resource type="PackedScene" uid="uid://22t5igcnh3t1" path="res://scenes/wall.tscn" id="2_wesjt"]
 [ext_resource type="Script" path="res://scenes/parallax_background.gd" id="3_ye6x0"]
 [ext_resource type="Texture2D" uid="uid://baycah2ns4wif" path="res://GameMapLayer1.png" id="4_yvfr8"]
 [ext_resource type="Texture2D" uid="uid://bdx8dr2njxojo" path="res://GameMapLayer2.png" id="5_jerne"]
@@ -19,20 +19,20 @@ script = ExtResource("1_kd32l")
 [node name="Env" type="Node2D" parent="."]
 
 [node name="Left Wall" parent="Env" instance=ExtResource("2_wesjt")]
-position = Vector2(-1256, 2)
-scale = Vector2(1.85, 185)
+position = Vector2(-1775, 2)
+scale = Vector2(50, 185)
 
 [node name="Right Wall" parent="Env" instance=ExtResource("2_wesjt")]
-position = Vector2(1206, 0)
-scale = Vector2(1.85, 185)
+position = Vector2(1666, -31)
+scale = Vector2(50, 185)
 
 [node name="Top Wall" parent="Env" instance=ExtResource("2_wesjt")]
-position = Vector2(0, -1780)
-scale = Vector2(135, 1.35)
+position = Vector2(-8, -2239)
+scale = Vector2(225, 50)
 
 [node name="Bottom Wall" parent="Env" instance=ExtResource("2_wesjt")]
-position = Vector2(0, 1726)
-scale = Vector2(135, 1.35)
+position = Vector2(-3, 2237)
+scale = Vector2(225, 50)
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Env"]
 mesh = SubResource("BoxMesh_py5vv")
