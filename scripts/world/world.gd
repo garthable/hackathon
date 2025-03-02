@@ -32,6 +32,9 @@ var turret_index: int = 0
 
 var prev_score_time = Time.get_ticks_msec()
 
+func _ready() -> void:
+	$'.'.name = "World"
+
 func _score() -> int:
 	"""
 	Gets how many seconds the player has been alive.

@@ -6,7 +6,7 @@ func _input(event: InputEvent) -> void:
 
 func _on_pressed() -> void:
 	var root = $"/root/"
-	var world = $"/root/World"
+	var world = $"../../../../../../../"
 	var new_world = load("res://scenes/world/world.tscn")
 	var instance = new_world.instantiate()
 	root.add_child(instance)
