@@ -1,3 +1,5 @@
+extends Node2D
+
 func spawn_explosion(position: Vector2, parent: Node):
 	var instance: GPUParticles2D = load("res://scenes/particles/explosion.tscn").instantiate()
 	instance.position = position
