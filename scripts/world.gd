@@ -13,6 +13,8 @@ extends Node2D
 @onready var BM= $"Spawner/BottomMiddle"
 @onready var BR= $"Spawner/BottomRight"
 
+@onready var spawners = [TL, TR, BL, BR]
+
 
 @export var mob_scene: PackedScene
 
@@ -21,9 +23,13 @@ var time
 var is_dead: bool = false
 var wait: float = 1
 var SPAWN: bool = false
-var round_1: bool = true
-var round_2: bool = false
-var round_3: bool = false
+
+var imps_to_spawn: int = 0
+var fighters_to_spawn: int = 0
+var deployer_to_spawn: int = 0
+var turrets_to_spawn: int = 0
+
+var index: int = 0
 
 func _Title() -> void:
 	print("Title")
@@ -32,35 +38,6 @@ func _Title() -> void:
 func new_game() ->void:
 	time = 0
 	score = 0
-	
-func first_wave() ->void:
-	if (round_1):
-		TL.spawn("imp")
-		TR.spawn("imp")
-		BL.spawn("imp")
-		BR.spawn("imp")
-		round_1 = false
-		round_2 = true
-	
-func second_wave() ->void:
-	if (round_2):
-		TL.spawn("fighter")
-		TR.spawn("fighter")
-		BL.spawn("imp")
-		BR.spawn("imp")
-		round_2 = false
-		round_3 = true
-
-func third_wave() ->void:
-	if (round_3):
-		TL.spawn("imp")
-		TR.spawn("fighter")
-		BL.spawn("fighter")
-		BR.spawn("deployer")
-		round_3 = false
-		round_1 = true
-		
-
 
 	 
 func _Score(delta: float) -> float:
@@ -78,15 +55,31 @@ func _ready() -> void:
 	new_game()
 	pass # Replace with function body.
 
+func spawn_mob(name: String) -> bool:
+	for i in range(4):
+		index = (index + 1) % 4
+		if spawners[index].spawn(name):
+			return true
+			
+	return false
+
+var prev_score = -1
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	score = _Score(delta)
-	if (score > 3) and (score < 6) and round_1:
-		first_wave()
-	if (score > 6) and (score < 12) and round_2:
-		second_wave()
-	if (score > 12) and (score < 24) and round_3:
-		third_wave()
-
+	prev_score = score
+	score = int(_Score(delta))
+	if prev_score != score:
+		if score % 3 == 0 or score % 2 == 0:
+			imps_to_spawn += 1
+		elif score % 3 == 1 or score % 4 == 0:
+			fighters_to_spawn += 1
+		else:
+			deployer_to_spawn += 1
+	if imps_to_spawn > 0 and spawn_mob("imp"):
+		imps_to_spawn -= 1
+	if fighters_to_spawn > 0 and spawn_mob("fighter"):
+		fighters_to_spawn -= 1
+	if deployer_to_spawn > 0 and spawn_mob("deployer"):
+		deployer_to_spawn -= 1
 	pass
