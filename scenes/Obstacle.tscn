@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dmpsmlnucekdf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tkkby"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_wrhnj"]
+size = Vector3(10, 10, 1)
+
+[node name="Obstacle" type="Area2D"]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_tkkby")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+mesh = SubResource("BoxMesh_wrhnj")
