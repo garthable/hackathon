@@ -83,7 +83,7 @@ func _process(delta: float) -> void:
 	score = int(_Score(delta))
 	if Time.get_ticks_msec() - prev_spawn_time >= spawn_time:
 		prev_spawn_time = Time.get_ticks_msec()
-		spawn_time = max(spawn_time / 1.01, 500)
+		spawn_time = max(spawn_time / 1.03, 500)
 		var roll = randi_range(0, 100)
 		if roll <= 50 or score < 15:
 			spawn_mob("imp")

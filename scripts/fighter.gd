@@ -6,7 +6,7 @@ extends Node2D
 @onready var bullet = preload("res://scenes/enemy_bullet.tscn")
 @onready var spawn_explosion = preload("res://scripts/spawn_explosion.gd")
 
-const SPEED: float = -50.0
+const SPEED: float = -70.0
 var shoot: bool = false
 
 func shoot_bullet() -> void:
@@ -17,7 +17,7 @@ func shoot_bullet() -> void:
 		-31*sin(theta)
 	)
 	instance.position = fighter.position + offset
-	instance.rotation = theta
+	instance.rotation = theta + randf_range(-0.15, 0.15)
 	instance.speed = -instance.BASE_SPEED + SPEED
 	parent.add_child(instance)
 	spawn_explosion.new().spawn_muzzle_flash(Vector2(-31, 0), $".", PI)

@@ -6,7 +6,7 @@
 size = Vector3(50, 40, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vrm4w"]
-size = Vector2(203.5, 65)
+size = Vector2(280, 150)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fheal"]
 size = Vector2(50, 40)
@@ -21,7 +21,7 @@ mesh = SubResource("BoxMesh_15p88")
 collision_layer = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ShootCollider"]
-position = Vector2(-127, 0)
+position = Vector2(-165, 0)
 shape = SubResource("RectangleShape2D_vrm4w")
 
 [node name="FighterCollider" type="Area2D" parent="."]
