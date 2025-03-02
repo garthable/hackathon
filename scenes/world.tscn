@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://d0s3x2j0hrosx"]
+[gd_scene load_steps=7 format=3 uid="uid://d0s3x2j0hrosx"]
 
 [ext_resource type="PackedScene" uid="uid://c7avru4nk0jpl" path="res://scenes/player.tscn" id="1_vc3yd"]
 [ext_resource type="PackedScene" uid="uid://22t5igcnh3t1" path="res://scenes/wall.tscn" id="2_wesjt"]
 [ext_resource type="PackedScene" uid="uid://cpel6vvf1yusu" path="res://scenes/fighter.tscn" id="3_inbiy"]
 [ext_resource type="PackedScene" uid="uid://b1j7n3yd73vuy" path="res://scenes/deployer.tscn" id="4_gnv5x"]
+[ext_resource type="PackedScene" uid="uid://brgr1hpjxyj63" path="res://scenes/turret.tscn" id="5_yh3y5"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_py5vv"]
 size = Vector3(10, 10, 1)
@@ -70,3 +71,6 @@ mesh = SubResource("BoxMesh_py5vv")
 
 [node name="Deployer" parent="." instance=ExtResource("4_gnv5x")]
 position = Vector2(1, 865)
+
+[node name="Turret" parent="." instance=ExtResource("5_yh3y5")]
+position = Vector2(-260, 455)
