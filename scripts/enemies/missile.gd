@@ -3,6 +3,7 @@ extends Area2D
 @onready var missile = $"."
 @onready var player = $"../Player"
 @onready var spawn_explosion = preload("res://scripts/helpers/spawn_explosion.gd")
+@onready var rt = preload("res://scripts/helpers/rotate_towards.gd").new()
 
 var lowering = true
 
@@ -12,14 +13,6 @@ const LOWER_SPEED = 75
 
 const ACCELERATION = -50
 var speed = -LOWER_SPEED
-
-func rotate_towards(theta: float, pos: Vector2, player_pos: Vector2) -> float:
-	var dx = pos.x - player_pos.x
-	var dy = pos.y - player_pos.y
-	
-	var goal_theta = atan2(dy, dx)
-	
-	return lerp_angle(theta, goal_theta, 0.025)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -35,7 +28,7 @@ func _process(delta: float) -> void:
 	speed += delta*ACCELERATION
 	speed = min(speed, 600)
 	
-	missile.rotation = rotate_towards(theta, pos, player_pos)
+	missile.rotation = rt.rotate_towards(theta, pos, player_pos, 0.025)
 	
 	missile.position.x += delta*speed*cos(theta)
 	missile.position.y += delta*speed*sin(theta)

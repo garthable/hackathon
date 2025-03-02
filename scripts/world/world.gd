@@ -1,9 +1,8 @@
 extends Node2D
-@onready var player = $"../Player"
-@onready var start = $"../StartTimer"
-@onready var score_time = $"../ScoreTimer"
-@onready var spawn =  $"Spawner"
+# Get player
+@onready var player = $"Player"
 
+# Get spawning locations
 @onready var TL= $"Spawner/TopLeft"
 @onready var TM= $"Spawner/TopMiddle"
 @onready var TR= $"Spawner/TopRight"
@@ -13,14 +12,12 @@ extends Node2D
 @onready var BM= $"Spawner/BottomMiddle"
 @onready var BR= $"Spawner/BottomRight"
 
+# Put spawners in array
 @onready var spawners = [TL, TR, BL, BR]
 @onready var turret_spawners = [TM, ML, MR, BM]
 
-
-@export var mob_scene: PackedScene
-
-var score
-var time
+var score = 0
+var time = 0
 var is_dead: bool = false
 var wait: float = 1
 var SPAWN: bool = false
@@ -33,30 +30,26 @@ var turrets_to_spawn: int = 0
 var index: int = 0
 var turret_index: int = 0
 
-func _Title() -> void:
-	pass
-		
-func new_game() ->void:
-	time = 0
-	score = 0
-
 var prev_score_time = Time.get_ticks_msec()
 
-func _Score(delta: float) -> float:
+func _score() -> int:
+	"""
+	Gets how many seconds the player has been alive.
+	Returns:
+		int representing number of seconds passed.
+	"""
 	if Time.get_ticks_msec() - prev_score_time >= 1000:
 		prev_score_time = Time.get_ticks_msec()
 		score += 1
 	return score
-	
-func _OpenTunnel() -> void:
-	pass
-	
-	
-func _ready() -> void:
-	new_game()
-	pass # Replace with function body.
 
 func spawn_turret() -> bool:
+	"""
+	Spawns turret at designated turret spawning spot.
+	Returns:
+		True if succesful
+		False if spawn was blocked
+	"""
 	for i in range(4):
 		turret_index = (turret_index + 1) % 4
 		if turret_spawners[turret_index].spawn("turret"):
@@ -65,6 +58,12 @@ func spawn_turret() -> bool:
 	return false
 
 func spawn_mob(mob_name: String) -> bool:
+	"""
+	Spawns mob at designated turret spawning spot.
+	Returns:
+		True if succesful
+		False if spawn was blocked
+	"""
 	for i in range(4):
 		index = (index + 1) % 4
 		if spawners[index].spawn(mob_name):
@@ -72,19 +71,21 @@ func spawn_mob(mob_name: String) -> bool:
 			
 	return false
 
-var prev_score = -1
+var prev_spawn_time: int = 0
+var spawn_time: int = 5000
 
-var prev_spawn_time = 0.0
-var spawn_time = 5000
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	prev_score = score
-	score = int(_Score(delta))
+func _process(_delta: float) -> void:
+	"""
+	Updates function variables every frame.
+	"""
+	score = int(_score())
 	if Time.get_ticks_msec() - prev_spawn_time >= spawn_time:
 		prev_spawn_time = Time.get_ticks_msec()
 		spawn_time = max(spawn_time / 1.03, 500)
 		var roll = randi_range(0, 100)
+		# Randomly selects mob to spawn, 
+		# certain mobs unlock after certain 
+		# scores have been reached.
 		if roll <= 50 or score < 15:
 			spawn_mob("imp")
 		elif roll <= 70 or score < 35:
