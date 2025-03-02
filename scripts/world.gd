@@ -87,7 +87,7 @@ func _process(delta: float) -> void:
 		var roll = randi_range(0, 100)
 		if roll <= 50 or score < 15:
 			spawn_mob("imp")
-		elif roll <= 70 or score < 60:
+		elif roll <= 70 or score < 35:
 			spawn_mob("fighter")
 		elif roll <= 80:
 			spawn_mob("deployer")
