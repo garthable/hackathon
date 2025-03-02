@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bnrf36yr6rfkp" path="res://GameMap.png" id="1_8uywe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bp7b5"]
+size = Vector2(21, 21)
 
 [sub_resource type="BoxMesh" id="BoxMesh_pqk7i"]
 size = Vector3(21, 21, 10)

@@ -1,15 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://d0s3x2j0hrosx"]
+[gd_scene load_steps=8 format=3 uid="uid://d0s3x2j0hrosx"]
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_kd32l"]
 [ext_resource type="PackedScene" uid="uid://c7avru4nk0jpl" path="res://scenes/player.tscn" id="1_vc3yd"]
 [ext_resource type="PackedScene" uid="uid://cdvueajcb24xv" path="res://scenes/spawner.tscn" id="2_o5bso"]
 [ext_resource type="PackedScene" uid="uid://22t5igcnh3t1" path="res://scenes/wall.tscn" id="2_wesjt"]
-[ext_resource type="Script" path="res://scenes/parallax_background.gd" id="3_ye6x0"]
+[ext_resource type="Script" path="res://scripts/parallax_background.gd" id="3_ye6x0"]
 [ext_resource type="Texture2D" uid="uid://baycah2ns4wif" path="res://GameMapLayer1.png" id="4_yvfr8"]
 [ext_resource type="Texture2D" uid="uid://bdx8dr2njxojo" path="res://GameMapLayer2.png" id="5_jerne"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_py5vv"]
-size = Vector3(10, 10, 1)
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_kd32l")
@@ -33,41 +30,6 @@ scale = Vector2(225, 50)
 [node name="Bottom Wall" parent="Env" instance=ExtResource("2_wesjt")]
 position = Vector2(-3, 2237)
 scale = Vector2(225, 50)
-
-[node name="MeshInstance2D" type="MeshInstance2D" parent="Env"]
-mesh = SubResource("BoxMesh_py5vv")
-
-[node name="MeshInstance2D2" type="MeshInstance2D" parent="Env"]
-position = Vector2(500, 0)
-mesh = SubResource("BoxMesh_py5vv")
-
-[node name="MeshInstance2D3" type="MeshInstance2D" parent="Env"]
-position = Vector2(-500, 0)
-mesh = SubResource("BoxMesh_py5vv")
-
-[node name="MeshInstance2D4" type="MeshInstance2D" parent="Env"]
-position = Vector2(0, -533)
-mesh = SubResource("BoxMesh_py5vv")
-
-[node name="MeshInstance2D5" type="MeshInstance2D" parent="Env"]
-position = Vector2(500, -533)
-mesh = SubResource("BoxMesh_py5vv")
-
-[node name="MeshInstance2D7" type="MeshInstance2D" parent="Env"]
-position = Vector2(1, 647)
-mesh = SubResource("BoxMesh_py5vv")
-
-[node name="MeshInstance2D8" type="MeshInstance2D" parent="Env"]
-position = Vector2(501, 647)
-mesh = SubResource("BoxMesh_py5vv")
-
-[node name="MeshInstance2D9" type="MeshInstance2D" parent="Env"]
-position = Vector2(-499, 647)
-mesh = SubResource("BoxMesh_py5vv")
-
-[node name="MeshInstance2D6" type="MeshInstance2D" parent="Env"]
-position = Vector2(-500, -533)
-mesh = SubResource("BoxMesh_py5vv")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="Env"]
 scroll_offset = Vector2(1000, 1000)
