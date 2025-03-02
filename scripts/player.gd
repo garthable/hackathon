@@ -94,5 +94,9 @@ func _collision(_area: Area2D) -> void:
 	col.set_deferred("disabled", true)
 	spawn_explosion.new().spawn_explosion(player.position, $'../')
 	
+	var death_menu = load('res://scenes/death_screen.tscn')
+	var instance: Control = death_menu.instantiate()
+	$'Camera2D'.add_child(instance)
+	
 	# Play explosion
 	# continue velocity
