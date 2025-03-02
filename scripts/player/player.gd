@@ -33,10 +33,19 @@ const FIRE_RATE_INC: int = 3
 var curr_fire_rate: int = 1
 
 func can_shoot() -> bool:
+	"""
+	Tracks when player can shoot.
+	Returns:
+		True if player can shoot
+		False if player cannot shoot
+	"""
 	var delta_time = Time.get_ticks_msec() - start_shooting_time
 	return curr_fire_rate < delta_time
 
 func shoot_bullet() -> void:
+	""" 
+	Handles bullet instantiation
+	"""
 	start_shooting_time = Time.get_ticks_msec()
 	curr_fire_rate += FIRE_RATE_INC
 	var instance = bullet.instantiate()
@@ -51,6 +60,11 @@ func shoot_bullet() -> void:
 	spawn_explosion.new().spawn_muzzle_flash(Vector2(15, 0), $".")
 
 func go_up(delta: float) -> void:
+	"""
+	Makes player go up, shoot, and slow down.
+	Args:
+		delta: delta time between frames
+	"""
 	time_firing += delta
 	time_firing = min(10.0, time_firing)
 	
@@ -63,6 +77,11 @@ func go_up(delta: float) -> void:
 		shoot_bullet()
 	
 func go_down(delta: float) -> void:
+	"""
+	Makes player go down, and speed up.
+	Args:
+		delta: delta time between frames
+	"""
 	time_firing -= 4*delta
 	time_firing = max(0, time_firing)
 	
@@ -72,6 +91,9 @@ func go_down(delta: float) -> void:
 	theta += ANGULAR_VELOCITY_NEG*delta
 
 func _process(delta: float) -> void:
+	""" 
+	Handles player inputs and player movement
+	"""
 	if is_dead:
 		return
 	if Input.is_action_just_pressed("space"):
@@ -90,6 +112,9 @@ func _process(delta: float) -> void:
 	camera.rotation = -theta
 
 func _collision(_area: Area2D) -> void:
+	"""
+	Dies on collision, creates death menu.
+	"""
 	is_dead = true
 	mesh.visible = false
 	col.set_deferred("disabled", true)
@@ -98,6 +123,3 @@ func _collision(_area: Area2D) -> void:
 	var death_menu = load('res://scenes/ui/death_screen.tscn')
 	var instance: CanvasLayer = death_menu.instantiate()
 	$'Camera2D'.add_child(instance)
-	
-	# Play explosion
-	# continue velocity

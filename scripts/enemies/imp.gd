@@ -5,7 +5,6 @@ extends Area2D
 @onready var spawn_explosion = preload("res://scripts/helpers/spawn_explosion.gd")
 @onready var rt = preload("res://scripts/helpers/rotate_towards.gd").new()
 
-
 const SPEED: float = -300.0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
