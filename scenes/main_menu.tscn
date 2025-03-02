@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://djht4ucp40djo"]
+[gd_scene load_steps=3 format=3 uid="uid://djht4ucp40djo"]
 
 [ext_resource type="Script" path="res://scripts/play.gd" id="1_itm8h"]
+[ext_resource type="Script" path="res://scripts/quit.gd" id="2_b37vp"]
 
 [node name="MainMenu" type="PanelContainer"]
 anchors_preset = 15
@@ -35,10 +36,12 @@ theme_override_font_sizes/font_size = 25
 text = "Play"
 script = ExtResource("1_itm8h")
 
-[node name="Settings" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Quit" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 10
 theme_override_font_sizes/font_size = 25
-text = "Settings (DONT WORK)"
+text = "Quit"
+script = ExtResource("2_b37vp")
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Play" to="MarginContainer/VBoxContainer/Play" method="_on_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Quit" to="MarginContainer/VBoxContainer/Quit" method="_on_pressed"]
