@@ -7,10 +7,10 @@ var lowering = true
 
 const ACTIVATE_TIME: int = 2000
 @onready var creation_time: int = Time.get_ticks_msec()
-const LOWER_SPEED = 50
+const LOWER_SPEED = 0
 
 const ACCELERATION = -50
-var speed = 0
+var speed = -LOWER_SPEED
 
 func rotate_towards(theta: float, pos: Vector2, player_pos: Vector2) -> float:
 	var dx = pos.x - player_pos.x
@@ -32,6 +32,7 @@ func _process(delta: float) -> void:
 	lowering = false
 	
 	speed += delta*ACCELERATION
+	speed = min(speed, 600)
 	
 	missile.rotation = rotate_towards(theta, pos, player_pos)
 	
