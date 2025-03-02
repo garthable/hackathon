@@ -64,10 +64,10 @@ func spawn_turret() -> bool:
 			
 	return false
 
-func spawn_mob(name: String) -> bool:
+func spawn_mob(mob_name: String) -> bool:
 	for i in range(4):
 		index = (index + 1) % 4
-		if spawners[index].spawn(name):
+		if spawners[index].spawn(mob_name):
 			return true
 			
 	return false

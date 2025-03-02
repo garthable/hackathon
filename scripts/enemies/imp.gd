@@ -26,6 +26,6 @@ func _process(delta: float) -> void:
 	imp.position.y += delta*SPEED*sin(theta)
 
 
-func _collision(area: Area2D) -> void:
+func _collision(_area: Area2D) -> void:
 	spawn_explosion.new().spawn_explosion(imp.position, $'../')
 	imp.queue_free()

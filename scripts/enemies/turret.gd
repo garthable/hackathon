@@ -21,7 +21,7 @@ func shoot():
 		if node.has_method("_collision"):
 			result.collider.get_parent()._collision(turret)
 	
-func _physics_process(delta):
+func _physics_process(_delta):
 	var space_state = get_world_2d().direct_space_state
 	# use global coordinates, not local to node
 	var pos = turret.global_position
@@ -51,7 +51,7 @@ func track() -> void:
 	col.rotation = mesh.rotation
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:	
+func _process(_delta: float) -> void:	
 	var pos: Vector2 = turret.position
 	if result:
 		line.points = [Vector3.ZERO, result.position - pos]

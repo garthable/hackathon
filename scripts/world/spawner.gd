@@ -13,12 +13,11 @@ extends Node2D
 
 var inside_list = []
 
-func spawn(name: String) -> bool:
-	var player_pos = player.position
+func spawn(mob_name: String) -> bool:
 	var pos = spawner.position
 	if len(inside_list):
 		return false
-	var instance = enemies[name].instantiate()
+	var instance = enemies[mob_name].instantiate()
 	
 	instance.position = pos
 	parent.add_child(instance)
