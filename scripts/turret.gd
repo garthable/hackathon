@@ -5,6 +5,7 @@ extends Area2D
 @onready var col = $"CollisionShape2D"
 @onready var player = $"../Player"
 @onready var line = $"Line2D"
+@onready var spawn_explosion = preload("res://scripts/spawn_explosion.gd")
 
 const FIRE_RATE: int = 3000
 
@@ -65,4 +66,5 @@ func _process(delta: float) -> void:
 	track()
 
 func _collision(_area: Area2D) -> void:
+	spawn_explosion.new().spawn_explosion(turret.position, $'../')
 	turret.queue_free()
